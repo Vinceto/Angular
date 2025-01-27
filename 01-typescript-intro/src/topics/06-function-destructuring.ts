@@ -1,4 +1,4 @@
-interface Product { 
+export interface Products { 
     id: number;
     name: string;
     description: string;
@@ -6,39 +6,40 @@ interface Product {
 
 }
 
-const phone: Product = {    
+const phone: Products = {    
     id: 1,
     name: 'Samsung Galaxy S21',
     description: 'The best phone ever',
     price: 1000
 };
 
-const tablet: Product = {
+const tablet: Products = {
     id: 2,
     name: 'Samsung Galaxy Tab S7',
     description: 'The best tablet ever',
     price: 800
 };
 
-interface TaxCalculationOptions {
-    product: Product[];
+export interface TaxCalculationOptions {
+    products: Products[];
     tax: number;
 }
 
-function taxCalculator(options: TaxCalculationOptions): number[] {
+export function taxCalculator(options: TaxCalculationOptions): [number,number] {
+    const {tax,products} = options;
     let total = 0;
-    options.product.forEach( (product) => {
-        total += product.price;
+    products.forEach( ({price}) => {
+        total += price;
     });
-    return [total, total * options.tax];
+    return [total, total * tax];
 }
 
-const shoppingCart: Product[] = [phone, tablet];
+const shoppingCart: Products[] = [phone, tablet];
 const tax = 0.16;
 
 
-const result = taxCalculator({
-    product: shoppingCart,
+const [total,taxTotal] = taxCalculator({
+    products: shoppingCart,
     tax
 }
     
@@ -46,7 +47,7 @@ const result = taxCalculator({
 
 
 //aplicar la desestructuracion en todo el ejercicio
-console.log('Total ', result[0])
-console.log('Tax ', result[1])
+// console.log('Total ', total)
+// console.log('Tax ', taxTotal)
 
 export {};
