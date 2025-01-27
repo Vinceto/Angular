@@ -1,2 +1,0 @@
-<!-- ayudamemoria -->
-npm run dev
