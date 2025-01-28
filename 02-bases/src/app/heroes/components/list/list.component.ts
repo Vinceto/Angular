@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
+  public heroes: string[] = ['Spiderman', 'Ironman', 'Hulk', 'Thor', 'Capitan America'];
+  public deletedHero ?:string;
 
+  removeLastHero():void {
+    this.deletedHero = this.heroes.pop();
+  }
 }
