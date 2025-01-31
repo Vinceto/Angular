@@ -26,7 +26,13 @@ export class MainPageComponent {
   }];
 
   onNewCharacter(character:Character):void{
-    console.log('Main Page');
-    console.log(character);
+    this.characters.push(character);
+  }
+
+  OnDeleteCharacter(character:Character):void{
+    const index = this.characters.findIndex(c => c.name === character.name && c.power === character.power);
+    if (index !== -1) {
+      this.characters.splice(index, 1);
+    }
   }
 }

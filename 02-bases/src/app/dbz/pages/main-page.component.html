@@ -2,8 +2,8 @@
 <hr>
 <div class="row">
   <div class="col">
-
-    <dbz-list [characterList]="characters"></dbz-list>
+    <!-- onDelete -->
+    <dbz-list (OnDeleteCharacter)="onDeleteCharacter($event)"  [characterList]="characters"></dbz-list>
 
   </div>
   <div class="col">
